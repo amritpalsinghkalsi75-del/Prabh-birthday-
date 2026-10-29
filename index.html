@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#13051f">
+<title>Happy Birthday Prabh ❤️</title>
+
+<style>
+*{box-sizing:border-box}
+
+:root{
+  --gold:#ffe5a1;
+  --pink:#ff82c6;
+  --purple:#321044;
+}
+
+body{
+  margin:0;
+  background:#10051c;
+  color:white;
+  font-family:Georgia,serif;
+  overflow-x:hidden;
+  text-align:center;
+}
+
+.scene{
+  min-height:100svh;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  padding:28px 18px;
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(ellipse at 50% 25%,#78398a 0%,#321044 42%,#080311 100%);
+  perspective:1200px;
+}
+
+.scene.active{
+  display:flex;
+  animation:fadeIn 1s ease both;
+}
+
+@keyframes fadeIn{
+  from{opacity:0}
+  to{opacity:1}
+}
+
+h1{
+  color:var(--gold);
+  font-size:clamp(36px,10vw,66px);
+  line-height:1.15;
+  text-shadow:0 0 15px #ffcb72,0 0 45px #ff72c8;
+  animation:glow 2s infinite alternate;
+}
+
+h2{color:var(--gold)}
+
+p{
+  position:relative;
+  z-index:2;
+}
+
+.small{
+  color:#f0d9f5;
+  line-height:1.8;
+  font-size:16px;
+}
+
+button{
+  border:1px solid #fff0b5;
+  border-radius:50px;
+  padding:15px 24px;
+  margin:12px 0;
+  background:linear-gradient(135deg,#fff0b5,#e7ad49,#ffca8a);
+  color:#351039;
+  font-weight:bold;
+  font-size:15px;
+  cursor:pointer;
+  box-shadow:0 8px 30px #ffc76645;
+  transition:transform .3s,box-shadow .3s;
+  position:relative;
+  z-index:5;
+}
+
+button:active{transform:scale(.96)}
+
+@keyframes glow{
+  from{filter:brightness(1)}
+  to{filter:brightness(1.25);text-shadow:0 0 25px #ffe5a1,0 0 65px #ff70cf}
+}
+
+/* Countdown */
+
+#count{
+  font-size:110px;
+  font-weight:bold;
+  color:var(--gold);
+  text-shadow:0 0 35px #ff85d2;
+  animation:pulse .8s infinite alternate;
+}
+
+@keyframes pulse{
+  to{transform:scale(1.15) rotateY(10deg)}
+}
+
+.loader{
+  height:75px;
+  width:75px;
+  border:5px solid #ffffff20;
+  border-top-color:var(--gold);
+  border-right-color:var(--pink);
+  border-radius:50%;
+  animation:spin 1s linear infinite;
+}
+
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* Envelope */
+
+.envelope{
+  width:min(300px,85vw);
+  height:190px;
+  background:linear-gradient(145deg,#f8d08b,#c67b36);
+  border-radius:8px;
+  margin:25px 0;
+  position:relative;
+  cursor:pointer;
+  box-shadow:0 20px 50px #0007,0 0 40px #ffcf7750;
+  transition:transform .5s;
+}
+
+.envelope:hover{transform:rotateY(-8deg) scale(1.03)}
+
+.envelope:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:#b66c39;
+  clip-path:polygon(0 0,50% 58%,100% 0);
+  transform-origin:top;
+  transition:transform .8s;
+  z-index:2;
+}
+
+.envelope.open:before{transform:rotateX(180deg)}
+
+.envelope:after{
+  content:"💌";
+  position:absolute;
+  font-size:60px;
+  left:50%;
+  top:55px;
+  transform:translateX(-50%);
+}
+
+/* Letter */
+
+.letter{
+  display:none;
+  width:min(520px,96%);
+  background:linear-gradient(140deg,#fff7df,#f7d9ad);
+  color:#612c47;
+  padding:25px 20px;
+  border-radius:15px;
+  text-align:left;
+  line-height:1.9;
+  box-shadow:0 20px 60px #0007,0 0 40px #ffd88b45;
+  position:relative;
+  z-index:4;
+  animation:paperIn 1s ease;
+}
+
+.letter h2{
+  text-align:center;
+  color:#9b245f;
+}
+
+#typed{
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+  font-size:16px;
+}
+
+@keyframes paperIn{
+  from{opacity:0;transform:rotateX(15deg) translateY(30px)}
+  to{opacity:1;transform:rotateX(0) translateY(0)}
+}
+
+.quill{
+  font-size:53px;
+  filter:drop-shadow(0 0 14px #56e5d3);
+  animation:write 1s infinite alternate;
+}
+
+@keyframes write{
+  to{transform:rotate(-12deg) translateY(-5px)}
+}
+
+/* Balloons */
+
+.balloon{
+  position:fixed;
+  bottom:-150px;
+  width:43px;
+  height:57px;
+  border-radius:50%;
+  z-index:3;
+  box-shadow:inset -8px -8px 12px #0002,inset 7px 7px 12px #fff5;
+  animation:rise 8s linear forwards;
+  pointer-events:none;
+}
+
+.balloon:before{
+  content:"";
+  position:absolute;
+  bottom:-7px;
+  left:18px;
+  border-left:5px solid transparent;
+  border-right:5px solid transparent;
+  border-bottom:8px solid currentColor;
+}
+
+.balloon:after{
+  content:"";
+  position:absolute;
+  top:63px;
+  left:21px;
+  width:1px;
+  height:90px;
+  background:#ffffff80;
+}
+
+@keyframes rise{
+  to{transform:translateY(-125vh) rotate(18deg)}
+}
+
+/* 3D cake */
+
+.cake{
+  width:240px;
+  height:210px;
+  position:relative;
+  margin:25px 0;
+  animation:floatCake 3s ease-in-out infinite;
+}
+
+@keyframes floatCake{
+  50%{transform:translateY(-8px) rotateY(5deg)}
+}
+
+.plate{
+  position:absolute;
+  bottom:0;
+  left:0;
+  width:240px;
+  height:35px;
+  border-radius:50%;
+  background:linear-gradient(#fff1d4,#c7a3ef);
+  box-shadow:0 10px 25px #0007;
+}
+
+.cakeBody{
+  position:absolute;
+  bottom:15px;
+  left:15px;
+  width:210px;
+  height:105px;
+  border-radius:12px 12px 22px 22px;
+  background:linear-gradient(90deg,#a92366,#ff9dce,#d84088);
+  box-shadow:0 14px 0 #851c52;
+}
+
+.icing{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:28px;
+  background:#fff0e5;
+  border-radius:50%;
+}
+
+.icing:after{
+  content:"";
+  position:absolute;
+  left:12px;
+  top:8px;
+  width:12px;
+  height:27px;
+  border-radius:0 0 10px 10px;
+  background:#fff0e5;
+  box-shadow:40px 8px 0 #fff0e5,85px 0 0 #fff0e5,140px 7px 0 #fff0e5;
+}
+
+.candle{
+  position:absolute;
+  left:111px;
+  top:20px;
+  height:53px;
+  width:18px;
+  border-radius:4px;
+  background:repeating-linear-gradient(45deg,#fff 0 7px,#ff78b9 7px 14px);
+  z-index:2;
+}
+
+.flame{
+  position:absolute;
+  left:111px;
+  top:-3px;
+  width:18px;
+  height:28px;
+  background:radial-gradient(ellipse at bottom,#fff4a1,#ffb22e,#ff652f);
+  border-radius:50% 50% 50% 0;
+  transform:rotate(-45deg);
+  box-shadow:0 0 25px #ffb42d;
+  animation:flicker .2s infinite alternate;
+  z-index:3;
+}
+
+@keyframes flicker{
+  to{transform:rotate(-40deg) scale(.85)}
+}
+
+#cakeMessage{
+  color:var(--gold);
+  line-height:1.7;
+  min-height:28px;
+}
+
+/* Fireworks */
+
+#fireworks{
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+  z-index:8;
+}
+
+@media(prefers-reduced-motion:reduce){
+  *,*:before,*:after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="fireworks"></canvas>
+
+<!-- 1: COUNTDOWN -->
+
+<section class="scene active" id="s1">
+  <p class="small">✨ A magical surprise is waiting for you ✨</p>
+  <div id="count">3</div>
+  <h2>Get Ready, Prabh! ❤️</h2>
+  <p class="small">Your special day begins now...</p>
+</section>
+
+<!-- 2: LOADING -->
+
+<section class="scene" id="s2">
+  <div class="loader"></div>
+  <h2>Creating Your Birthday Magic...</h2>
+  <p class="small">Love • Blessings • Happiness</p>
+</section>
+
+<!-- 3: ENVELOPE -->
+
+<section class="scene" id="s3">
+  <p class="small">💖 A special surprise made just for you 💖</p>
+  <h2>Dear Prabh...</h2>
+  <div class="envelope" id="envelope" role="button" tabindex="0"
+       aria-label="Open birthday surprise"></div>
+  <button id="openBtn">TAP TO OPEN YOUR SURPRISE 💌</button>
+</section>
+
+<!-- 4: BIRTHDAY SURPRISE -->
+
+<section class="scene" id="s4">
+  <p>✨ 🎈 ✨ 🎈 ✨</p>
+  <h1>HAPPY<br>BIRTHDAY<br>PRABH! ❤️</h1>
+  <p class="small">
+    Today is all about you! 👑<br>
+    May your life always shine with happiness.
+  </p>
+  <button id="letterBtn">READ YOUR SPECIAL LETTER 💌</button>
+</section>
+
+<!-- 5: BLESSING LETTER -->
+
+<section class="scene" id="s5">
+  <div class="quill">🦚🪶</div>
+  <h2>A Letter From The Heart</h2>
+  <div class="letter" id="letter">
+    <h2>Happy Birthday, Prabh! ❤️</h2>
+    <div id="typed"></div>
+  </div>
+  <p id="writingStatus" class="small">Writing your letter with love...</p>
+  <button id="cakeBtn" style="display:none">
+    LET'S CELEBRATE! 🎂
+  </button>
+</section>
+
+<!-- 6: CAKE -->
+
+<section class="scene" id="s6">
+  <h1>MAKE A WISH! 🎂</h1>
+  <p class="small">One beautiful cake, a million wishes!</p>
+
+  <div class="cake" id="cake">
+    <div class="plate"></div>
+    <div class="cakeBody">
+      <div class="icing"></div>
+    </div>
+    <div class="candle"></div>
+    <div class="flame" id="flame"></div>
+  </div>
+
+  <button id="cutBtn">🎂 CUT THE CAKE 🎂</button>
+  <p id="cakeMessage"></p>
+  <button id="finalBtn" style="display:none">GRAND FINALE ✨</button>
+</section>
+
+<!-- 7: GRAND FINALE -->
+
+<section class="scene" id="s7">
+  <h1>LOVE YOU, PRABH! 💖</h1>
+  <p class="small">
+    May Waheguru bless you with good health,<br>
+    happiness, peace and endless success.<br>
+    May every beautiful dream come true. 🙏
+  </p>
+  <h2>Keep Smiling Always! ❤️</h2>
+  <p>🎈 🎂 🎉 🎁 🎉 🎂 🎈</p>
+  <button id="againBtn">WATCH AGAIN 🎁</button>
+</section>
+
+<script>
+const $ = id => document.getElementById(id);
+
+function wait(ms){
+  return new Promise(resolve => setTimeout(resolve,ms));
+}
+
+function showScene(id){
+  document.querySelectorAll(".scene").forEach(s=>{
+    s.classList.remove("active");
+  });
+  $(id).classList.add("active");
+}
+
+let birthdayStarted = false;
+let letterStarted = false;
+let cakeCut = false;
+
+async function startBirthday(){
+  if(birthdayStarted) return;
+  birthdayStarted = true;
+
+  for(const number of [3,2,1]){
+    $("count").textContent = number;
+    await wait(1000);
+  }
+
+  showScene("s2");
+  await wait(2500);
+  showScene("s3");
+}
+
+startBirthday();
+
+/* Magical floating particles */
+
+function makeParticle(){
+  const p = document.createElement("span");
+  const symbols = ["✨","💖","⭐","🌸","✦"];
+  p.className = "particle";
+  p.textContent = symbols[Math.floor(Math.random()*symbols.length)];
+  p.style.cssText = `
+    position:fixed;
+    top:105vh;
+    left:${Math.random()*100}vw;
+    font-size:${14+Math.random()*20}px;
+    z-index:2;
+    pointer-events:none;
+    animation:particleRise ${5+Math.random()*5}s linear forwards;
+  `;
+  document.body.appendChild(p);
+  setTimeout(()=>p.remove(),11000);
+}
+
+const particleStyle = document.createElement("style");
+particleStyle.textContent = `
+@keyframes particleRise{
+  to{transform:translateY(-120vh) rotate(400deg);opacity:0}
+}`;
+document.head.appendChild(particleStyle);
+
+setInterval(makeParticle,450);
+
+/* Balloons */
+
+function launchBalloons(amount=25){
+  const colors = [
+    "#ff55a7","#ffd166","#70e1d1",
+    "#a88bff","#ff7c67","#ffffff"
+  ];
+
+  for(let i=0;i<amount;i++){
+    setTimeout(()=>{
+      const b = document.createElement("div");
+      b.className = "balloon";
+      b.style.left = Math.random()*95+"vw";
+      b.style.background = colors[Math.floor(Math.random()*colors.length)];
+      b.style.color = b.style.background;
+      b.style.animationDuration = 6+Math.random()*5+"s";
+      document.body.appendChild(b);
+      setTimeout(()=>b.remove(),12000);
+    },i*100);
+  }
+}
+
+/* Open surprise */
+
+function openSurprise(){
+  if(!$("s3").classList.contains("active")) return;
+
+  $("envelope").classList.add("open");
+  launchBalloons(35);
+  showScene("s4");
+  startFireworks();
+}
+
+$("openBtn").addEventListener("click",openSurprise);
+$("envelope").addEventListener("click",openSurprise);
+
+$("envelope").addEventListener("keydown",e=>{
+  if(e.key==="Enter"||e.key===" "){
+    e.preventDefault();
+    openSurprise();
+  }
+});
+
+/* Automatic blessing letter */
+
+const message =
+`My dearest Prabh, ❤️
+
+HAPPY BIRTHDAY! 🎂💖
+
+Today is a very special day because it celebrates someone truly wonderful — YOU!
+
+I pray that Waheguru always keeps you happy, healthy, safe and surrounded by people who genuinely care for you.
+
+May your life be filled with beautiful moments, endless smiles, peace, love and success. May every difficult day make you stronger and every new morning bring you fresh hope.
+
+May all your dreams come true, may your heart always stay kind, and may you achieve everything you work hard for.
+
+Waheguru ji tuhanu hamesha Chardi Kala vich rakhan, tuhadi zindagi khushiyan naal bhar den, te har kadam te kamyabi bakhshan. 🙏❤️
+
+Never forget how special you are. You deserve so much happiness, respect and love. Keep smiling, keep shining and always believe in yourself.
+
+No matter how much time passes, you will always be a precious part of our family. Today and always, I wish you nothing but the very best.
+
+Once again, HAPPY BIRTHDAY, DEAR PRABH! 🎉🎂
+
+May your life shine brighter than the stars
+and your happiness last forever. ✨
+
+With lots of love, prayers and blessings,
+Your loving sibling ❤️`;
+
+$("letterBtn").addEventListener("click",async()=>{
+  if(letterStarted) return;
+  letterStarted = true;
+
+  showScene("s5");
+  $("letter").style.display = "block";
+  $("typed").textContent = "";
+  $("cakeBtn").style.display = "none";
+  $("writingStatus").style.display = "block";
+
+  for(let i=0;i<message.length;i++){
+    $("typed").textContent += message[i];
+
+    // Keep the newest writing visible on a mobile screen.
+    if(i%5===0){
+      $("typed").scrollIntoView({block:"nearest",behavior:"auto"});
+    }
+
+    await wait(message[i]==="\n"?130:24);
+  }
+
+  $("writingStatus").style.display = "none";
+  $("cakeBtn").style.display = "inline-block";
+  launchBalloons(12);
+});
+
+$("cakeBtn").addEventListener("click",()=>{
+  showScene("s6");
+  $("flame").style.display = "block";
+  $("cakeMessage").textContent = "";
+  $("cutBtn").style.display = "inline-block";
+  $("finalBtn").style.display = "none";
+  cakeCut = false;
+});
+
+/* Cake celebration */
+
+$("cutBtn").addEventListener("click",()=>{
+  if(cakeCut) return;
+  cakeCut = true;
+
+  $("flame").style.display = "none";
+  $("cake").animate([
+    {transform:"rotate(0deg) scale(1)"},
+    {transform:"rotate(-5deg) scale(1.05)"},
+    {transform:"rotate(5deg) scale(1.08)"},
+    {transform:"rotate(0deg) scale(1)"}
+  ],{duration:900,easing:"ease-in-out"});
+
+  $("cakeMessage").textContent =
+    "🎉 Cake cut! May all your wishes come true, Prabh! ❤️";
+
+  $("cutBtn").style.display = "none";
+  $("finalBtn").style.display = "inline-block";
+
+  launchBalloons(40);
+  startFireworks();
+});
+
+/* Final celebration */
+
+$("finalBtn").addEventListener("click",()=>{
+  showScene("s7");
+  launchBalloons(45);
+  startFireworks();
+});
+
+$("againBtn").addEventListener("click",()=>{
+  birthdayStarted = false;
+  letterStarted = false;
+  cakeCut = false;
+
+  $("count").textContent = "3";
+  $("letter").style.display = "none";
+  $("typed").textContent = "";
+  $("writingStatus").style.display = "block";
+  $("cakeBtn").style.display = "none";
+  $("finalBtn").style.display = "none";
+  $("cutBtn").style.display = "inline-block";
+
+  showScene("s1");
+  startBirthday();
+});
+
+/* Fireworks animation */
+
+const canvas = $("fireworks");
+const ctx = canvas.getContext("2d");
+let sparks = [];
+let fireworksActive = false;
+let animationRunning = false;
+
+function resizeCanvas(){
+  const dpr = Math.min(window.devicePixelRatio||1,2);
+  canvas.width = innerWidth*dpr;
+  canvas.height = innerHeight*dpr;
+  canvas.style.width = innerWidth+"px";
+  canvas.style.height = innerHeight+"px";
+  ctx.setTransform(dpr,0,0,dpr,0,0);
+}
+
+window.addEventListener("resize",resizeCanvas);
+resizeCanvas();
+
+function burst(){
+  for(let i=0;i<3;i++){
+    const x = Math.random()*innerWidth;
+    const y = Math.random()*innerHeight*.6;
+    const colors = ["#ffe6a0","#ff8dc7","#9ef7e5","#c4a0ff"];
+    const color = colors[Math.floor(Math.random()*colors.length)];
+
+    for(let j=0;j<35;j++){
+      const angle = Math.random()*Math.PI*2;
+      const speed = 1+Math.random()*4;
+
+      sparks.push({
+        x,y,
+        vx:Math.cos(angle)*speed,
+        vy:Math.sin(angle)*speed,
+        life:45+Math.random()*25,
+        color
+      });
+    }
+  }
+}
+
+function animateFireworks(){
+  ctx.clearRect(0,0,innerWidth,innerHeight);
+  sparks = sparks.filter(s=>s.life>0);
+
+  for(const s of sparks){
+    s.x += s.vx;
+    s.y += s.vy;
+    s.vy += .025;
+    s.life--;
+
+    ctx.globalAlpha = Math.min(1,s.life/25);
+    ctx.fillStyle = s.color;
+    ctx.beginPath();
+    ctx.arc(s.x,s.y,2,0,Math.PI*2);
+    ctx.fill();
+  }
+
+  ctx.globalAlpha = 1;
+
+  if(fireworksActive||sparks.length){
+    requestAnimationFrame(animateFireworks);
+  }else{
+    animationRunning = false;
+    ctx.clearRect(0,0,innerWidth,innerHeight);
+  }
+}
+
+function startFireworks(){
+  if(!animationRunning){
+    animationRunning = true;
+    requestAnimationFrame(animateFireworks);
+  }
+
+  fireworksActive = true;
+
+  for(let i=0;i<5;i++){
+    setTimeout(burst,i*350);
+  }
+
+  setTimeout(()=>{
+    fireworksActive = false;
+  },2500);
+}
+</script>
+
+</body>
+</html>
